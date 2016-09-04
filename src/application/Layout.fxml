@@ -10,7 +10,7 @@
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
             <Button fx:id="browse" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#displayFile" text="Browse" />
-            <Button fx:id="compare" layoutX="273.0" layoutY="9.0" mnemonicParsing="false" text="Compare" />
+            <Button fx:id="compare" layoutX="273.0" layoutY="9.0" mnemonicParsing="false" onAction="#compareFiles" text="Compare" />
             <ProgressBar layoutX="376.0" layoutY="12.0" prefWidth="200.0" progress="0.0" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">

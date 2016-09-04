@@ -47,6 +47,24 @@ public class Controller {
 
 	}
 	
-
-	
+	public boolean compareFilesStrings(String text1, String text2){
+		boolean result=true;
+		int shorterTextLength=0;
+		if(text1.length()>text2.length()){
+			shorterTextLength=text2.length();
+		}else{
+			shorterTextLength=text1.length();
+		}
+		
+		for (int i =0;i<shorterTextLength;i++){
+			if(text1.charAt(i)!=(text2.charAt(i))){
+				result= false;
+			}
+		}
+		return result;
+	}
+	public void compareFiles(){
+		boolean results = compareFilesStrings(textArea1.getText(), textArea2.getText());
+		System.out.println(results);
+	}
 }
