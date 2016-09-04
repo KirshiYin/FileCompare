@@ -11,38 +11,42 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class Controller {
-	public Button Browse;
+	
+	public Button browse;
+	public Button compare;
 	public TextArea textArea1;
 	public TextArea textArea2;
 	public Stage primaryStage;
 	public File selectedFile;
-	
-	public void displayFile(){
+	TextArea textAreaToFill;
+
+	public void displayFile() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open Resource File");
-		 selectedFile = fileChooser.showOpenDialog(primaryStage);
-		 TextArea textAreaToFill = null;
-		 try {
-			Scanner s = new Scanner(new File(selectedFile.toString()));
-			if(textArea1.getText().trim().equals("")){
+		selectedFile = fileChooser.showOpenDialog(primaryStage);
+		try {
+			Scanner fileScanner = new Scanner(new File(selectedFile.toString()));
+			if (textArea1.getText().trim().equals("")) {
 				textAreaToFill = textArea1;
-			}else {
+			} else {
 				textAreaToFill = textArea2;
 			}
-			while(s.hasNext()){
-				if(s.hasNext()){
-					textAreaToFill.appendText(s.next() + " ");
+			while (fileScanner.hasNext()) {
+				if (fileScanner.hasNext()) {
+					textAreaToFill.appendText(fileScanner.next() + " ");
 				}
-					//Platform.runLater(() -> textArea.appendText(s.next()));
-					// System.out.println(s.next());
-				}
-			s.close();
-			//}
-		} catch (FileNotFoundException e) {
+				// Platform.runLater(() -> textArea.appendText(s.next()));
+				// System.out.println(s.next());
+			}
+			fileScanner.close();
+
+		} catch (FileNotFoundException | NoSuchElementException e) {
 			e.printStackTrace();
-		}catch (NoSuchElementException ne){
-			System.out.println(ne.getMessage());
-		}
-		
+			System.out.println("an error has occured: " + e.getMessage());
+		} 
+
 	}
+	
+
+	
 }
